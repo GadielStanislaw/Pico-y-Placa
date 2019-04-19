@@ -7,7 +7,7 @@ class Verify(object):
 
     def  result(self):
         v = self.vehicle
-        if v!=None:
+        if v.date!='' and v.license!='' and v.time!='':
             #Preprocessing of text in plate or license
             v_1 = int(re.sub(r'[A-Z,-]+', '', v.license, re.I))
             lDig = int(repr(v_1)[-1])
@@ -21,15 +21,22 @@ class Verify(object):
                 or ( totalTime > 960 and totalTime < 1170 ))):
                 if ((lDig==1 or lDig==2) and ( day=='Monday')):
                     print('Warning this vehicle is not autorized for road')
+                    return 'Warning this vehicle is not autorized for road'
                 elif ((lDig==3 or lDig==4) and ( day=='Tuesday')):
                     print('Warning this vehicle is not autorized for road')
+                    return 'Warning this vehicle is not autorized for road'
                 elif ((lDig==5 or lDig==6) and ( day=='Wednesday')):
                     print('Warning this vehicle is not autorized for road')
+                    return 'Warning this vehicle is not autorized for road'
                 elif ((lDig==7 or lDig==8) and ( day=='Thursday')):
                     print('Warning this vehicle is not autorized for road')
+                    return 'Warning this vehicle is not autorized for road'
                 elif ((lDig==9 or lDig==0) and ( day=='Friday')):
                     print('Warning this vehicle is not autorized for road')
+                    return 'Warning this vehicle is not autorized for road'
                 else:
                     print('Ok this Vehicle is Autorized for road')
+                    return 'Ok this Vehicle is Autorized for road'
         else:
             print('There is not information about of Vehicle')
+            return 'There is not information about of Vehicle'
